@@ -1,6 +1,6 @@
 import type { User } from "@supabase/supabase-js";
 import type { CreateFastifyContextOptions } from "@trpc/server/adapters/fastify";
-import { getSupabaseClient } from "./supabase.js";
+import { getSupabaseClient } from "./supabase.mjs";
 
 type Context = {
   user: User | null;

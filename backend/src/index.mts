@@ -5,9 +5,9 @@ import {
   fastifyTRPCPlugin,
   type FastifyTRPCPluginOptions,
 } from "@trpc/server/adapters/fastify";
-import { createContext } from "./context.js";
-import { loggerOptions } from "./logger.js";
-import { appRouter, type AppRouter } from "./router.js";
+import { createContext } from "./context.mjs";
+import { loggerOptions } from "./logger.mjs";
+import { appRouter, type AppRouter } from "./router.mjs";
 
 const port = Number(process.env.PORT ?? 3001);
 const server = fastify({

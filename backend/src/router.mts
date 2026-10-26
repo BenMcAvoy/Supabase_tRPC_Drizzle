@@ -1,9 +1,9 @@
 import { TRPCError } from "@trpc/server";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import { classes, studentClasses, students } from "./db/schema.js";
-import { getDb } from "./db/index.js";
-import { protectedProcedure, publicProcedure, router } from "./trpc.js";
+import { classes, studentClasses, students } from "./db/schema.mjs";
+import { getDb } from "./db/index.mjs";
+import { protectedProcedure, publicProcedure, router } from "./trpc.mjs";
 
 export const appRouter = router({
   health: publicProcedure.query(() => ({ status: "ok" as const })),
