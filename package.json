@@ -1,7 +1,6 @@
 {
   "name": "t3-trpc-monorepo",
   "private": true,
-  "type": "module",
   "workspaces": ["frontend", "backend"],
   "scripts": {
     "dev": "concurrently -k -n backend,frontend -c blue,green \"bun --cwd=backend run dev\" \"bun --cwd=frontend run dev\"",
