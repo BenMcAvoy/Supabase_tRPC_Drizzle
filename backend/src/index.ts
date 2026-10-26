@@ -27,14 +27,14 @@ const trpcOptions = {
 } satisfies FastifyTRPCPluginOptions<AppRouter>["trpcOptions"];
 
 server.register(fastifyTRPCPlugin, {
-  prefix: "/trpc",
+  prefix: "/api/trpc",
   trpcOptions,
 });
 
 async function startServer() {
   try {
     await server.listen({ port, host: "0.0.0.0" });
-    server.log.info({ port, host: "0.0.0.0", path: "/trpc" }, "tRPC API listening");
+    server.log.info({ port, host: "0.0.0.0", path: "/api/trpc" }, "tRPC API listening");
   } catch (error) {
     server.log.error({ err: error, port }, "Failed to start the tRPC API");
     process.exit(1);

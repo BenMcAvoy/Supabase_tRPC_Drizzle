@@ -23,7 +23,7 @@ const queryClient = new QueryClient({
 const trpcClient = trpc.createClient({
   links: [
     httpBatchLink({
-      url: "/trpc",
+      url: "/api/trpc",
       async headers() {
         const { data } = await supabase.auth.getSession();
         return data.session

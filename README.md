@@ -21,3 +21,11 @@ The backend can also be started by itself with `bun --cwd=backend run dev`.
 Supabase credentials for the Vite app are read from `frontend/.env`; the backend reads `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` from `backend/.env` to validate signed-in users. Both use the same project URL and publishable key. The key is intended for browser use; protect data with Supabase Auth and Row Level Security policies.
 
 The backend's Drizzle client reads `DATABASE_URL` from `backend/.env`. Define table schemas in `backend/src/db/schema.ts`, generate migrations with `bun --cwd=backend run db:generate`, then apply them with `bun --cwd=backend run db:migrate`.
+
+## Deploying to Vercel
+
+The root `vercel.json` defines two services: a Fastify backend under `/api` and a Vite frontend at `/`. In the Vercel project settings, set the framework preset to **Services**. Both services receive public traffic through these routes.
+
+Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` for the frontend service. Set `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, and `DATABASE_URL` for the backend service. Vite reads its variables at build time; the backend reads its variables at runtime. Do not commit `.env` files.
+
+Run `bunx vercel dev` from the repository root to run the services locally through Vercel's routing. The tRPC endpoint is `/api/trpc` locally and in production.
