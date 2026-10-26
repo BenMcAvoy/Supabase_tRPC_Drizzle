@@ -1,0 +1,13 @@
+{
+  "name": "t3-trpc-monorepo",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"bun --cwd=backend run dev\" \"bun --cwd=frontend run dev\"",
+    "build": "bun --cwd=backend run build && bun --cwd=frontend run build",
+    "typecheck": "bun --cwd=backend run typecheck && bun --cwd=frontend run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
